@@ -11,16 +11,15 @@ selected_item = ball_item.DEFAULT
 item_select_image = None
 SCREEN_CENTER_X = 400
 SCREEN_CENTER_Y = 300
+ITEM_KEYS = {
+    SDLK_0: ball_item.NONE,
+    SDLK_1: ball_item.SMALL_BALL,
+    SDLK_2: ball_item.BIG_BALL,
+}
 
 
 def select_item(key):
-    if key == SDLK_0:
-        return ball_item.NONE
-    if key == SDLK_1:
-        return ball_item.SMALL_BALL
-    if key == SDLK_2:
-        return ball_item.BIG_BALL
-    return None
+    return ITEM_KEYS.get(key)
 
 
 def reset_item_selection():

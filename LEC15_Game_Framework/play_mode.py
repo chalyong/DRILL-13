@@ -23,6 +23,12 @@ def select_item(key):
     return None
 
 
+def reset_item_selection():
+    global item_mode, selected_item
+    item_mode = False
+    selected_item = ball_item.DEFAULT
+
+
 def handle_events():
     global item_mode, selected_item
 
@@ -48,8 +54,7 @@ def handle_events():
 def init():
     global boy, item_mode, selected_item, item_select_image
 
-    item_mode = False
-    selected_item = ball_item.DEFAULT
+    reset_item_selection()
     boy = Boy()
     game_world.add_oject(boy)
 

@@ -33,7 +33,7 @@ def handle_events():
             elif event.key == SDLK_2:
                 selected_item = ball_item.BIG_BALL
         elif not item_mode:
-            boy.handle_event(event)
+            boy.handle_event(event, selected_item)
 
 def init():
     global boy

@@ -11,6 +11,16 @@ selected_item = ball_item.DEFAULT
 item_select_image = None
 
 
+def select_item(key):
+    if key == SDLK_0:
+        return ball_item.NONE
+    if key == SDLK_1:
+        return ball_item.SMALL_BALL
+    if key == SDLK_2:
+        return ball_item.BIG_BALL
+    return None
+
+
 def handle_events():
     global item_mode, selected_item
 
@@ -27,12 +37,9 @@ def handle_events():
             import pause_mode
             game_framework.push_mode(pause_mode)
         elif item_mode and event.type == SDL_KEYDOWN:
-            if event.key == SDLK_0:
-                selected_item = ball_item.NONE
-            elif event.key == SDLK_1:
-                selected_item = ball_item.SMALL_BALL
-            elif event.key == SDLK_2:
-                selected_item = ball_item.BIG_BALL
+            item = select_item(event.key)
+            if item is not None:
+                selected_item = item
         elif not item_mode:
             boy.handle_event(event, selected_item)
 

@@ -46,7 +46,7 @@ def handle_events():
             game_framework.push_mode(pause_mode)
         elif item_mode and event.type == SDL_KEYDOWN:
             item = select_item(event.key)
-            if item is not None:
+            if item is not None and ball_item.is_selectable(item):
                 selected_item = item
         elif not item_mode:
             boy.handle_event(event, selected_item)

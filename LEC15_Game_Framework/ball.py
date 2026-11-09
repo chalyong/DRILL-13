@@ -8,12 +8,16 @@ class Ball:
     BIG_IMAGE_PATH = 'ball41x41.png'
     images = {}
 
+    @classmethod
+    def load_sprite(cls, image_path):
+        if image_path not in cls.images:
+            cls.images[image_path] = load_image(image_path)
+        return cls.images[image_path]
+
     def __init__(self, x, y, velocity, image_path=SMALL_IMAGE_PATH):
-        if image_path not in Ball.images:
-            Ball.images[image_path] = load_image(image_path)
         self.x, self.y = x, y
         self.velocity = velocity
-        self.image = Ball.images[image_path]
+        self.image = Ball.load_sprite(image_path)
 
     def update(self):
         self.x += self.velocity

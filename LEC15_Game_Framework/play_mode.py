@@ -9,6 +9,8 @@ import ball_item
 item_mode = False
 selected_item = ball_item.DEFAULT
 item_select_image = None
+SCREEN_CENTER_X = 400
+SCREEN_CENTER_Y = 300
 
 
 def select_item(key):
@@ -62,8 +64,7 @@ def render():
     clear_canvas()
     game_world.render()
     if item_mode:
-        item_select_image.draw(get_canvas_width() // 2,
-                               get_canvas_height() // 2)
+        item_select_image.draw(SCREEN_CENTER_X, SCREEN_CENTER_Y)
     update_canvas()
 
 def finish():

@@ -8,6 +8,7 @@ import ball_item
 
 item_mode = False
 selected_item = ball_item.DEFAULT
+item_select_image = None
 
 
 def handle_events():
@@ -36,13 +37,16 @@ def handle_events():
             boy.handle_event(event, selected_item)
 
 def init():
-    global boy
+    global boy, item_mode, selected_item, item_select_image
 
+    item_mode = False
+    selected_item = ball_item.DEFAULT
     boy = Boy()
     game_world.add_oject(boy)
 
     grass = Grass()
     game_world.add_oject(grass, 0)
+    item_select_image = load_image('item_select.png')
 
 def update():
     game_world.update()
@@ -50,6 +54,9 @@ def update():
 def render():
     clear_canvas()
     game_world.render()
+    if item_mode:
+        item_select_image.draw(get_canvas_width() // 2,
+                               get_canvas_height() // 2)
     update_canvas()
 
 def finish():

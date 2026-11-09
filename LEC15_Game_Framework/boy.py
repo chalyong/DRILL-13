@@ -51,9 +51,7 @@ class Boy:
         if selected_item == ball_item.NONE:
             return
 
-        image_path = Ball.SMALL_IMAGE_PATH
-        if selected_item == ball_item.BIG_BALL:
-            image_path = Ball.BIG_IMAGE_PATH
+        image_path = ball_item.IMAGE_PATHS[selected_item]
 
         ball = Ball(self.x, self.y, self.face_dir * 10, image_path)
         game_world.add_oject(ball)
